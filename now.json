@@ -6,7 +6,8 @@
     ],
     "routes": [
         { "src": "/", "dest": "server.js" },
-        { "src": "/webhook", "dest": "server.js" }
+        { "src": "/webhook", "dest": "server.js" },
+        { "src": "/debug", "dest": "server.js" }
     ],
     "env": {
         "CHANNEL_ACCESS_TOKEN": "@channel_access_token",
