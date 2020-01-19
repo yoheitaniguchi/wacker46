@@ -7,8 +7,8 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 
 const env = {
-  CHANNEL_ACCESS_TOKEN:'82ac5297034f5ef642b5539e684ef670',
-  CHANNEL_SECRET:'iDDtsUizej1E33bypin95D0POCk+Y7z77QVGdgillx8/AZMCi9UEymLrMRVgQi46bIel/K57V4MaiO0yyzUVOdA5YKOtrnf2DRrcmYkOujWK7IHR8ee7b84OQWPz7R5S/XBealvKLaO3TsT/R2DZKgdB04t89/1O/w1cDnyilFU=',
+  CHANNEL_ACCESS_TOKEN:'XXXXXXXXXXXXXXXXXX',
+  CHANNEL_SECRET:'XXXXXXXXXXXXXXXXXXXXXXX',
 };
 
 const config = {
@@ -54,7 +54,7 @@ function handleEvent(event) {
 const getPict = async (userId,mes) => {
 
   const env = {
-    UNSPLASHCLIENT_ID:'92cc37748fc1925c363445f31fbf38e8f2ef348ab2bf7707433d6056ac3abf06'
+    UNSPLASHCLIENT_ID:'XXXXXXXXXXXXXXXXXXXXXXXXXXX'
   };
     const res = await axios.get('https://api.unsplash.com/search/photos?page=1&query='+ mes + '&client_id=' + env.UNSPLASHCLIENT_ID);
   const item = res.data;
