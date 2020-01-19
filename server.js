@@ -16,7 +16,11 @@ const config = {
   channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN
 };
 
-app.get('/', (req, res) => res.send('Hello LINE BOT!(GET):'+ process.env.CHANNEL_SECRET)); //ブラウザ確認用(無くても問題ない)
+app.get('/', (req, res) => res.send('Hello LINE BOT!(GET):')); //ブラウザ確認用(無くても問題ない)
+
+app.get('/debug',(req, res) => {
+  res.send(process.env.CHANNEL_ACCESS_TOKEN);
+});
 
 app.post('/webhook', line.middleware(config), (req, res) => {
     //console.log(req.body.events);
