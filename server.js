@@ -1,20 +1,23 @@
 'use strict';
 
 const express = require('express');
+const app = express();
+
 const line = require('@line/bot-sdk');
 const axios = require('axios');
 const PORT = process.env.PORT || 3000;
-const app = express();
 
-const env = {
-  CHANNEL_ACCESS_TOKEN:'xxxxxxxxxx',
-  CHANNEL_SECRET:'xxxx',
-};
+
+
+//const env = process.env;
 
 const config = {
-  channelSecret: env.CHANNEL_ACCESS_TOKEN,
-  channelAccessToken: env.CHANNEL_SECRET
+  channelSecret: process.env.CHANNEL_SECRET,
+  channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN
 };
+
+console.log(process.env.CHANNEL_SECRET);
+console.log(process.env.CHANNEL_ACCESS_TOKEN);
 
 app.get('/', (req, res) => res.send('Hello LINE BOT!(GET)')); //ブラウザ確認用(無くても問題ない)
 
@@ -53,10 +56,7 @@ function handleEvent(event) {
 
 const getPict = async (userId,mes) => {
 
-  const env = {
-    UNSPLASHCLIENT_ID:'xxxxxx'
-  };
-    const res = await axios.get('https://api.unsplash.com/search/photos?page=1&query='+ mes + '&client_id=' + env.UNSPLASHCLIENT_ID);
+  const res = await axios.get('https://api.unsplash.com/search/photos?page=1&query='+ mes + '&client_id=' + process.env.UNSPLASHCLIENT_ID);
   const item = res.data;
   //console.log(item);
 

@@ -1,9 +1,16 @@
 {
     "version": 2,
-    "name": "mylinebot",
-    "builds": [{ "src": "server.js", "use": "@now/node" }],
+    "name": "wacker46",
+    "builds": [
+        { "src": "server.js", "use": "@now/node" }
+    ],
     "routes": [
         { "src": "/", "dest": "server.js" },
         { "src": "/webhook", "dest": "server.js" }
-    ]
+    ],
+    "env": {
+        "CHANNEL_ACCESS_TOKEN": "@channel_access_token",
+        "CHANNEL_SECRET": "@channel_secret",
+        "UNSPLASHCLIENT_ID":"@unsplashclient_id"
+      }
 }
