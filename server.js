@@ -7,8 +7,6 @@ const line = require('@line/bot-sdk');
 const axios = require('axios');
 const PORT = process.env.PORT || 3000;
 
-
-
 //const env = process.env;
 
 const config = {
@@ -19,7 +17,7 @@ const config = {
 app.get('/', (req, res) => res.send('Hello LINE BOT!(GET):')); //ブラウザ確認用(無くても問題ない)
 
 app.get('/debug',(req, res) => {
-  res.send(process.env.CHANNEL_ACCESS_TOKEN);
+  res.send(config.channelSecret);
 });
 
 app.post('/webhook', line.middleware(config), (req, res) => {
