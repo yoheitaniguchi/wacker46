@@ -9,7 +9,7 @@ title: "Line Chat Botを作ってみる（基礎編） Wacker #46"
 
 ---
 
-### 背景 <hr>
+### 背景 
 
 ### Chatって色々可能性があると思う
 
@@ -35,7 +35,7 @@ title: "Line Chat Botを作ってみる（基礎編） Wacker #46"
 
 ---
 
-### 今日やる事 <hr>
+### 今日やる事 
 
 - 達成目標
   - ChatBotの仕組みの基本
@@ -65,7 +65,7 @@ title: "Line Chat Botを作ってみる（基礎編） Wacker #46"
 
 ---
 
-### アーキテクト <hr>
+### アーキテクト 
 
 - Chat App ⇔ Chat Bot
   - エージェント型/拡張型
@@ -79,14 +79,14 @@ LINE ⇔ LINE Platform ⇔ Web APP ⇔ Web Service
 
 ---
 
-### 準備 <hr>
+### 準備 
 
 - アカウント準備
 - 開発環境の準備
 
 ---
 
-#### 準備.LINE Developersの登録　<hr>
+#### 準備.LINE Developersの登録　
 
 - 前提：LINEアカウントが必要
 - [LINE Developers](https://developers.line.biz/ja/)からログイン
@@ -95,7 +95,7 @@ LINE ⇔ LINE Platform ⇔ Web APP ⇔ Web Service
 
 ---
 
-#### 準備.LINE Developersの登録.2　<hr>
+#### 準備.LINE Developersの登録.2　
 
 - LINEアカウントでログイン
 - 必要事項を入力して先に進める
@@ -104,7 +104,7 @@ LINE ⇔ LINE Platform ⇔ Web APP ⇔ Web Service
 
 ---
 
-#### 準備.LINE Developersの登録.3　<hr>
+#### 準備.LINE Developersの登録.3　
 
 - この画面まで進める
 
@@ -112,7 +112,7 @@ LINE ⇔ LINE Platform ⇔ Web APP ⇔ Web Service
 
 ---
 
-#### 準備.開発環境　<hr>
+#### 準備.開発環境　
 
 - Nodejs 12.0.0
   - (最新だとLineライブラリが動かないので今回はこのバージョン)
@@ -124,7 +124,7 @@ LINE ⇔ LINE Platform ⇔ Web APP ⇔ Web Service
 
 ---
 
-#### 準備.開発環境(Windows編)　<hr>
+#### 準備.開発環境(Windows編)　
 
 - Nodejsのバージョン管理のためにnodistをインストール
 
@@ -144,7 +144,7 @@ nodist 12.0.0
 
 ---
 
-### 1.画像を返すChatBotの作成 <hr>
+### 1.画像を返すChatBotの作成 
 
 - LINE Developerの設定
 - expressでWebアプリを作成
@@ -153,7 +153,7 @@ nodist 12.0.0
 
 ---
 
-#### LINE Developerの設定 <hr>
+#### LINE Developerの設定 
 
 1. プロバイダー作成
 1. チャンネル作成
@@ -163,49 +163,49 @@ nodist 12.0.0
 
 ---
 
-#### LINE Developer.プロバイダー作成 <hr>
+#### LINE Developer.プロバイダー作成 
 
 ![LINE Developers](./img/linedev1.png)
 
 ---
 
-#### LINE Developer.チャンネル作成 <hr>
+#### LINE Developer.チャンネル作成 
 
 ![LINE Developers](./img/linedev2.png)
 
 ---
 
-#### LINE Developer.チャンネル作成 <hr>
+#### LINE Developer.チャンネル作成 
 
 ![LINE Developers](./img/linedev3.png)
 
 ---
 
-#### LINE Developer.チャンネル作成 <hr>
+#### LINE Developer.チャンネル作成 
 
 ![LINE Developers](./img/linedev4.png)
 
 ---
 
-#### LINE Developer.チャンネル作成 <hr>
+#### LINE Developer.チャンネル作成 
 
 ![LINE Developers](./img/linedev5.png)
 
 ---
 
-#### LINE Developer.チャンネルの設定 <hr>
+#### LINE Developer.チャンネルの設定 
 
 ![LINE Developers](./img/linedev6.png)
 
 ---
 
-#### LINE Developer.Message APIの設定 <hr>
+#### LINE Developer.Message APIの設定 
 
 ![LINE Developers](./img/linechan1.png)
 
 ---
 
-#### LINE Developer.Message APIの設定 <hr>
+#### LINE Developer.Message APIの設定 
 
 - Webhook URL = いまは未設定で次へ
 
@@ -213,13 +213,13 @@ nodist 12.0.0
 
 ---
 
-#### LINE Developer.Message APIの設定 <hr>
+#### LINE Developer.Message APIの設定 
 
 ![LINE Developers](./img/linechan3.png)
 
 ---
 
-#### LINE Developer.Message APIの設定 <hr>
+#### LINE Developer.Message APIの設定 
 
 - 以下、デフォルトで進める
   - グループ・複数人チャットへの参加を許可する = 無効
@@ -234,7 +234,7 @@ nodist 12.0.0
 
 ---
 
-#### LINE Developer.LINEアプリに追加 <hr>
+#### LINE Developer.LINEアプリに追加 
 
 - LINEアプリでQRコードを読込んで追加する
 
@@ -242,7 +242,7 @@ nodist 12.0.0
 
 ---
 
-### ExpressでWebアプリを作成 <hr>
+### ExpressでWebアプリを作成 
 
 - Webアプリ作成
 - ngrokの起動→アクセス確認
@@ -258,7 +258,7 @@ nodist 12.0.0
 
 ---
 
-#### ライブラリをインストール <hr>
+#### ライブラリをインストール 
 
 - 以下をインストール（npm i -g　xxx）
   - express
@@ -267,7 +267,7 @@ nodist 12.0.0
 
 ---
 
-#### Webアプリ作成 <hr>
+#### Webアプリ作成 
 
 - Githubからソースをクローン or ダウンロード
   - git@github.com:yoheitaniguchi/wacker46.git
@@ -279,7 +279,7 @@ nodist 12.0.0
 
 ---
 
-#### Webアプリ作成 <hr>
+#### Webアプリ作成 
 
 「.env」ファイルに以下を記述
 - CHANNEL_SECRET= *YOUR KEY*
@@ -291,7 +291,7 @@ nodist 12.0.0
 
 ---
 
-#### ngrokを起動させてアクセス <hr>
+#### ngrokを起動させてアクセス 
 
 ```
 ngrok http 3000
@@ -301,7 +301,7 @@ ngrok http 3000
 
 ---
 
-### #ngrokを起動させてアクセス <hr>
+### #ngrokを起動させてアクセス 
 
 - 生成されたURLを使ってインターネットからローカルにアクセスが可能となる。
 
@@ -309,7 +309,7 @@ ngrok http 3000
 
 ---
 
-#### ngrokを起動させてアクセス <hr>
+#### ngrokを起動させてアクセス 
 
 - 生成されたURLをLineチャンネルのwebhookの設定に入力する。
   - 例：https://xxxxx.ngrok.io/webhook
@@ -321,11 +321,11 @@ ngrok http 3000
 
 ---
 
-#### LINEからメッセージを送ってみる<hr>
+#### LINEからメッセージを送ってみる
 
 ---
 
-### ZEITへデプロイ<hr>
+### ZEITへデプロイ
 
 - ZEITへデプロイを実行
   - 環境変数設定(次ページで説明)
@@ -335,7 +335,7 @@ ngrok http 3000
 
 ---
 
-### ZEITへデプロイ.環境変数設定<hr>
+### ZEITへデプロイ.環境変数設定
 
 - 以下コマンドで各KEYをZEITの環境変数に設定
   - now secrets add 変数名 KEY
@@ -348,7 +348,7 @@ ngrok http 3000
 
 ---
 
-### ZEITへデプロイ<hr>
+### ZEITへデプロイ
 
 ```
 // now コマンドを実行
@@ -365,7 +365,7 @@ $ now
 
 ---
 
-### ZEITへデプロイ<hr>
+### ZEITへデプロイ
 
 - 以下のようなログが流れる
 
@@ -384,7 +384,7 @@ $ now
 
 ---
 
-### ZEITへデプロイ<hr>
+### ZEITへデプロイ
 
 - ZEITのURLをLINE Developerのwebhookの設定に入力し、動作確認を行う
 
@@ -404,7 +404,7 @@ $ now
 
 ---
 
-### 参考サイト<hr>
+### 参考サイト
 
 -  [1時間でLINE BOTを作るハンズオン (資料+レポート) in Node学園祭2017 #nodefest](https://qiita.com/n0bisuke/items/ceaa09ef8898bee8369d)
 
