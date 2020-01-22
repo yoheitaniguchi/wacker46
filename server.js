@@ -17,7 +17,7 @@ const config = {
 app.get('/', (req, res) => res.send('Hello LINE BOT!(GET):')); //ブラウザ確認用(無くても問題ない)
 
 app.get('/debug',(req, res) => {
-  //res.send(config.channelSecret);
+  res.send(config.channelSecret);
 });
 
 app.post('/webhook', line.middleware(config), (req, res) => {
