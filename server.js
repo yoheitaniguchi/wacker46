@@ -7,7 +7,8 @@ const line = require('@line/bot-sdk');
 const axios = require('axios');
 const PORT = process.env.PORT || 3000;
 
-//const env = process.env;
+require('dotenv').config();
+
 
 const config = {
   channelSecret: process.env.CHANNEL_SECRET,
@@ -16,12 +17,7 @@ const config = {
 
 app.get('/', (req, res) => res.send('Hello LINE BOT!(GET):')); //ブラウザ確認用(無くても問題ない)
 
-app.get('/debug',(req, res) => {
-  res.send(config.channelSecret);
-});
-
 app.post('/webhook', line.middleware(config), (req, res) => {
-    //console.log(req.body.events);
 
     //ここのif分はdeveloper consoleの"接続確認"用なので削除して問題ないです。
     if(req.body.events[0].replyToken === '00000000000000000000000000000000' && req.body.events[1].replyToken === 'ffffffffffffffffffffffffffffffff'){
@@ -43,22 +39,18 @@ function handleEvent(event) {
   }
 
   getPict(event.source.userId,event.message.text); 
-
   
   return client.replyMessage(event.replyToken, {
     type: 'text',
     text: event.message.text //実際に返信の言葉を入れる箇所
   });
-  
-
 }
 
 const getPict = async (userId,mes) => {
 
   const res = await axios.get('https://api.unsplash.com/search/photos?page=1&query='+ mes + '&client_id=' + process.env.UNSPLASHCLIENT_ID);
   const item = res.data;
-  //console.log(item);
-
+  
   await client.pushMessage(userId, {
       //type: 'image',
       //originalContentUrl: item.results[0].urls.regular,
@@ -115,7 +107,6 @@ const getPict = async (userId,mes) => {
     });
 };
 
-//app.listen(PORT);
 (process.env.NOW_REGION) ? module.exports = app : app.listen(PORT);
 console.log(`Server running at ${PORT}`);
 
